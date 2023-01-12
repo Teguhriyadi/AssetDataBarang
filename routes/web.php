@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AppController;
+use App\Http\Controllers\Autentikasi\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get("/", [LoginController::class, "login"]);
+Route::post("/", [LoginController::class, "post_login"]);
+
+Route::get("/dashboard", [AppController::class, "dashboard"]);
+
+Route::get("/template", function() {
+    return view("layouts/v_main");
 });
