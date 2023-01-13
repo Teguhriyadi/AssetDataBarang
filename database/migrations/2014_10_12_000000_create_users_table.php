@@ -19,7 +19,9 @@ return new class extends Migration
             $table->string("email")->unique();
             $table->string("password");
             $table->tinyInteger("dibuat_oleh")->default(0);
-            $table->string("foto")->nullable();
+            $table->string("nomor_hp", 20);
+            $table->enum("jenis_kelamin", ["L", "P"]);
+            $table->text("alamat");
             $table->enum("status", [1, 0])->default(1);
             $table->timestamps();
         });

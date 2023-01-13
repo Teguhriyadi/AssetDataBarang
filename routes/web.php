@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Akun\ProfilSayaController;
+use App\Http\Controllers\Akun\UsersController;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\Autentikasi\LoginController;
 use Illuminate\Support\Facades\Route;
@@ -22,4 +24,9 @@ Route::get("/dashboard", [AppController::class, "dashboard"]);
 
 Route::get("/template", function() {
     return view("layouts/v_main");
+});
+
+Route::prefix("akun")->group(function() {
+    Route::resource("users", UsersController::class);
+    Route::resource("profil_saya", ProfilSayaController::class);
 });
