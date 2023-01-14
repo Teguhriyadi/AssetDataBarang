@@ -63,10 +63,11 @@
                             <i class="fa fa-bar-chart-o"></i> Laporan
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            <li>
+                                <a class="dropdown-item" href="{{ url('/laporan/rekap') }}">
+                                    Rekap Laporan
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">

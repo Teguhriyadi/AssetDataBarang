@@ -4,6 +4,7 @@ use App\Http\Controllers\Akun\ProfilSayaController;
 use App\Http\Controllers\Akun\UsersController;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\Autentikasi\LoginController;
+use App\Http\Controllers\Laporan\RekapController;
 use App\Http\Controllers\Master\BarangController;
 use App\Http\Controllers\Transaksi\BarangKeluarController;
 use App\Http\Controllers\Transaksi\BarangMasukController;
@@ -37,6 +38,10 @@ Route::group(["middleware" => ["autentikasi"]], function() {
             Route::resource("masuk", BarangMasukController::class);
             Route::resource("keluar", BarangKeluarController::class);
         });
+    });
+
+    Route::prefix("laporan")->group(function() {
+        Route::resource("rekap", RekapController::class);
     });
 
     Route::prefix("akun")->group(function() {
