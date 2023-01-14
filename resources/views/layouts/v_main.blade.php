@@ -86,7 +86,7 @@
         </div>
     </nav>
 
-    <div class="container pb-3 pt-2">
+    <div class="container pb-3" style="height: 100vh">
         <div class="konten pt-3">
             @yield("content")
         </div>

@@ -5,7 +5,14 @@
 <h3>Dashboard</h3>
 
 <div class="alert alert-success" role="alert">
-    Selamat Datang <strong>{{ Auth::user()->nama }}</strong> di Aplikasi {{ env("APP_NAME") }}. Silahkan Pilih Menu Untuk Memulai Program.
+    <h4 class="alert-heading">Berhasil Login!</h4>
+    <p>
+        Selamat Datang <strong>{{ Auth::user()->nama }}</strong> di Aplikasi {{ env("APP_NAME") }}.
+    </p>
+    <hr>
+    <p class="mb-0">
+        Silahkan Pilih Menu Untuk Memulai Program.
+    </p>
 </div>
 
 <div class="row">
