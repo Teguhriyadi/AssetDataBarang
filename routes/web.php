@@ -30,5 +30,6 @@ Route::group(["middleware" => ["autentikasi"]], function() {
         Route::resource("profil_saya", ProfilSayaController::class);
     });
     Route::get("/logout", [LoginController::class, "logout"]);
+    Route::put("/ganti_password", [LoginController::class, "ganti_password"]);
 });
 

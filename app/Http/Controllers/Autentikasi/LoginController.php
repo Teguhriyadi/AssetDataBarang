@@ -30,4 +30,27 @@ class LoginController extends Controller
 
         return redirect("/");
     }
+
+    public function ganti_password(Request $request)
+    {
+        if ($request->password_baru != $request->konfirmasi_password) {
+            return redirect()->back()->with([
+                "message" => '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Oopss!</strong> Konfirmasi Password Tidak Sesuai.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>'
+            ]);
+        } else {
+            User::where("id_users", Auth::user()->id_users)->update([
+                "password" => bcrypt($request->password_baru)
+            ]);
+
+            return back()->with([
+                "message" => '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Berhasil!</strong> Password Anda Telah di Ganti.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>'
+            ]);
+        }
+    }
 }
