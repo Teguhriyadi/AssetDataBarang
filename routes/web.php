@@ -17,16 +17,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get("/", [LoginController::class, "login"]);
-Route::post("/", [LoginController::class, "post_login"]);
-
-Route::get("/dashboard", [AppController::class, "dashboard"]);
-
-Route::get("/template", function() {
-    return view("layouts/v_main");
+Route::group(["middleware" => ["guest"]], function() {
+    Route::get("/", [LoginController::class, "login"]);
+    Route::post("/", [LoginController::class, "post_login"]);
 });
 
-Route::prefix("akun")->group(function() {
-    Route::resource("users", UsersController::class);
-    Route::resource("profil_saya", ProfilSayaController::class);
+Route::group(["middleware" => ["autentikasi"]], function() {
+    Route::get("/dashboard", [AppController::class, "dashboard"]);
+
+    Route::prefix("akun")->group(function() {
+        Route::resource("users", UsersController::class);
+        Route::resource("profil_saya", ProfilSayaController::class);
+    });
+    Route::get("/logout", [LoginController::class, "logout"]);
 });
+
