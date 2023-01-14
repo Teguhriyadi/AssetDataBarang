@@ -1,5 +1,7 @@
 @extends("layouts.v_main")
 
+@section("title", "Edit Users")
+
 @section("content")
 
 <h3>Edit Users</h3>

@@ -57,7 +57,7 @@
                         <form action="{{ url('/akun/users/'.$data["id_users"]) }}" method="POST" style="display: inline;">
                             @method("DELETE")
                             @csrf
-                            <button type="submit" class="btn btn-danger btn-sm">
+                            <button onclick="return confirm('Yakin ? Anda Ingin Menghapus Data Ini ? ')" type="submit" class="btn btn-danger btn-sm">
                                 <i class="fa fa-trash"></i> Hapus
                             </button>
                         </form>

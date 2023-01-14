@@ -1,5 +1,7 @@
 @extends("layouts.v_main")
 
+@section("title", "Tambah Users")
+
 @section("content")
 
 <h3>Tambah Users</h3>
