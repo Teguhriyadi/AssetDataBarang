@@ -106,25 +106,25 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="nama"> Nama </label>
-                        <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama">
+                        <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama" required>
                     </div>
                     <div class="row pt-2">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="satuan"> Satuan </label>
-                                <input type="text" class="form-control" name="satuan" id="satuan" placeholder="Masukkan Satuan Barang">
+                                <input type="text" class="form-control" name="satuan" id="satuan" placeholder="Masukkan Satuan Barang" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="berat"> Berat </label>
-                                <input type="text" class="form-control" name="berat" id="berat" placeholder="Masukkan Berat Barang">
+                                <input type="number" class="form-control" name="berat" id="berat" placeholder="Masukkan Berat Barang" required>
                             </div>
                         </div>
                     </div>
                     <div class="form-group pt-2">
                         <label for="harga"> Harga </label>
-                        <input type="number" class="form-control" name="harga" id="harga" min="1" placeholder="0">
+                        <input type="number" class="form-control" name="harga" id="harga" required min="1" placeholder="0">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -158,25 +158,25 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="nama"> Nama </label>
-                        <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama" value="{{ $brg["nama"] }}">
+                        <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama" required value="{{ $brg["nama"] }}">
                     </div>
                     <div class="row pt-2">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="satuan"> Satuan </label>
-                                <input type="text" class="form-control" name="satuan" id="satuan" placeholder="Masukkan Satuan Barang" value="{{ $brg["satuan"] }}">
+                                <input type="text" class="form-control" name="satuan" id="satuan" placeholder="Masukkan Satuan Barang" required value="{{ $brg["satuan"] }}">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="berat"> Berat </label>
-                                <input type="text" class="form-control" name="berat" id="berat" placeholder="Masukkan Berat Barang" value="{{ $brg["berat"] }}">
+                                <input type="text" class="form-control" name="berat" id="berat" placeholder="Masukkan Berat Barang" required value="{{ $brg["berat"] }}">
                             </div>
                         </div>
                     </div>
                     <div class="form-group pt-2">
                         <label for="harga"> Harga </label>
-                        <input type="number" class="form-control" name="harga" id="harga" min="1" placeholder="0" value="{{ $brg["harga"] }}">
+                        <input type="number" class="form-control" name="harga" id="harga" required min="1" placeholder="0" value="{{ $brg["harga"] }}">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -216,19 +216,19 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="tanggal"> Tanggal </label>
-                                <input type="date" class="form-control" name="tanggal" id="tanggal">
+                                <input type="date" class="form-control" name="tanggal" id="tanggal" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="qty"> QTY </label>
-                                <input type="number" class="form-control" name="qty" id="qty" placeholder="0" min="1">
+                                <input type="number" class="form-control" name="qty" id="qty" placeholder="0" min="1" required>
                             </div>
                         </div>
                     </div>
                     <div class="form-group pt-2">
                         <label for="asal_barang"> Asal Barang </label>
-                        <input type="text" class="form-control" name="asal_barang" id="asal_barang" placeholder="Masukkan Asal Barang">
+                        <input type="text" class="form-control" name="asal_barang" id="asal_barang" placeholder="Masukkan Asal Barang" required>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -276,19 +276,19 @@ $stok = $barang_masuk - $barang_keluar;
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="tanggal"> Tanggal </label>
-                                <input type="date" class="form-control" name="tanggal" id="tanggal">
+                                <input type="date" class="form-control" name="tanggal" id="tanggal" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="qty"> QTY </label>
-                                <input type="number" class="form-control" name="qty" id="qty" placeholder="0" min="0" max="{{ $stok }}">
+                                <input type="number" class="form-control" name="qty" id="qty" required placeholder="0" min="0" max="{{ $stok }}">
                             </div>
                         </div>
                     </div>
                     <div class="form-group pt-2">
                         <label for="asal_barang"> Asal Barang </label>
-                        <input type="text" class="form-control" name="asal_barang" id="asal_barang" placeholder="Masukkan Asal Barang">
+                        <input type="text" class="form-control" name="asal_barang" id="asal_barang" placeholder="Masukkan Asal Barang" required>
                     </div>
                 </div>
                 <div class="modal-footer">

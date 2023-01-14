@@ -22,12 +22,12 @@
         <div class="col-md-5">
             <div class="form-group">
                 <label for="tanggal_mulai" class="pb-2"> Tanggal Mulai </label>
-                <input type="date" class="form-control" name="tanggal_mulai" id="tanggal_mulai" value="{{ empty($tanggal_mulai) ? '' : $tanggal_mulai }}">
+                <input type="date" class="form-control" name="tanggal_mulai" id="tanggal_mulai" required value="{{ empty($tanggal_mulai) ? '' : $tanggal_mulai }}">
             </div>
         </div>
         <div class="col-md-5">
             <label for="tanggal_akhir" class="pb-2"> Tanggal Akhir </label>
-            <input type="date" class="form-control" name="tanggal_akhir" id="tanggal_akhir" value="{{ empty($tanggal_akhir) ? '' : $tanggal_akhir }}">
+            <input type="date" class="form-control" name="tanggal_akhir" id="tanggal_akhir" required value="{{ empty($tanggal_akhir) ? '' : $tanggal_akhir }}">
         </div>
         <div class="col-md-2" style="padding-top: 30px;">
             <button type="submit" class="btn btn-primary btn-sm" style="width: 100%;padding-top: 7px; padding-bottom: 7px;">

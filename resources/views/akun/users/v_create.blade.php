@@ -19,13 +19,13 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="nama"> Nama </label>
-                        <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama">
+                        <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama" required>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="email"> Email </label>
-                        <input type="email" class="form-control" name="email" id="email" placeholder="Masukkan Email">
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Masukkan Email" required>
                     </div>
                 </div>
             </div>
@@ -33,13 +33,13 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="nomor_hp"> Nomor HP </label>
-                        <input type="text" class="form-control" name="nomor_hp" id="nomor_hp" placeholder="Masukkan Nomor HP">
+                        <input type="text" class="form-control" name="nomor_hp" id="nomor_hp" placeholder="Masukkan Nomor HP" required>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="jenis_kelamin"> Jenis Kelamin </label>
-                        <select name="jenis_kelamin" class="form-control" id="jenis_kelamin">
+                        <select name="jenis_kelamin" class="form-control" id="jenis_kelamin" required>
                             <option value="">- Pilih -</option>
                             <option value="L">Laki - Laki</option>
                             <option value="P">Perempuan</option>
@@ -49,7 +49,7 @@
             </div>
             <div class="form-group pt-2">
                 <label for="alamat"> Alamat </label>
-                <textarea name="alamat" class="form-control" id="alamat" rows="5" placeholder="Masukkan Alamat"></textarea>
+                <textarea name="alamat" class="form-control" id="alamat" rows="5" placeholder="Masukkan Alamat" required></textarea>
             </div>
         </div>
         <div class="card-footer">

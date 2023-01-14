@@ -20,13 +20,13 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="nama"> Nama </label>
-                        <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama" value="{{ $edit->nama }}">
+                        <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama" required value="{{ $edit->nama }}">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="email"> Email </label>
-                        <input type="email" class="form-control" name="email" id="email" placeholder="Masukkan Email" value="{{ $edit->email }}">
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Masukkan Email" required value="{{ $edit->email }}">
                     </div>
                 </div>
             </div>
@@ -34,13 +34,13 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="nomor_hp"> Nomor HP </label>
-                        <input type="text" class="form-control" name="nomor_hp" id="nomor_hp" placeholder="Masukkan Nomor HP" value="{{ $edit->nomor_hp }}">
+                        <input type="text" class="form-control" name="nomor_hp" id="nomor_hp" placeholder="Masukkan Nomor HP" required value="{{ $edit->nomor_hp }}">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="jenis_kelamin"> Jenis Kelamin </label>
-                        <select name="jenis_kelamin" class="form-control" id="jenis_kelamin">
+                        <select name="jenis_kelamin" class="form-control" id="jenis_kelamin" required>
                             <option value="">- Pilih -</option>
                             <option value="L" {{ $edit->jenis_kelamin == "L" ? 'selected' : '' }} >Laki - Laki</option>
                             <option value="P" {{ $edit->jenis_kelamin == "P" ? 'selected' : '' }} >Perempuan</option>
@@ -50,7 +50,7 @@
             </div>
             <div class="form-group pt-2">
                 <label for="alamat"> Alamat </label>
-                <textarea name="alamat" class="form-control" id="alamat" rows="5" placeholder="Masukkan Alamat">{{ $edit->alamat }}</textarea>
+                <textarea name="alamat" class="form-control" id="alamat" rows="5" placeholder="Masukkan Alamat" required>{{ $edit->alamat }}</textarea>
             </div>
         </div>
         <div class="card-footer">
