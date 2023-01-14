@@ -41,7 +41,7 @@
 
 <div class="card">
     <div class="card-header">
-        Laporan Dari Tanggal
+        Rekap Laporan Keseluruhan
     </div>
     <div class="card-body">
         <table class="table table-responsive table-bordered" style="width: 100%;" id="myTable">
