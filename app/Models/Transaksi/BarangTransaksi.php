@@ -16,4 +16,14 @@ class BarangTransaksi extends Model
     public $primaryKey = "kode_transaksi";
 
     protected $keyType = "string";
+
+    public function getBarang()
+    {
+        return $this->belongsTo("App\Models\Master\Barang", "kode_barang", "kode_barang");
+    }
+
+    public function getUser()
+    {
+        return $this->belongsTo("App\Models\User", "id_users", "id_users");
+    }
 }

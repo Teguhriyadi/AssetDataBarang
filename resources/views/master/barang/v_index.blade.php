@@ -9,6 +9,10 @@
 
 @section("content")
 
+@php
+    use App\Models\Transaksi\BarangTransaksi;
+@endphp
+
 <h3>Data Barang</h3>
 
 @if (session('message'))
@@ -33,6 +37,8 @@
                     <th class="text-center">Satuan</th>
                     <th class="text-center">Berat</th>
                     <th class="text-center">Harga</th>
+                    <th class="text-center">Stok</th>
+                    <th class="text-center">Transaksi</th>
                     <th class="text-center">Aksi</th>
                 </tr>
             </thead>
@@ -41,6 +47,13 @@
                 $nomer = 0;
                 @endphp
                 @foreach ($barang as $data)
+                    @php
+                        $barang_masuk = BarangTransaksi::where("kode_barang", $data->kode_barang)->where("status", "1")->sum("qty");
+
+                        $barang_keluar = BarangTransaksi::where("kode_barang", $data["kode_barang"])->where("status", "0")->sum("qty");
+
+                        $stok = $barang_masuk - $barang_keluar;
+                    @endphp
                 <tr>
                     <td class="text-center">{{ ++$nomer }}.</td>
                     <td class="text-center">{{ $data["kode_barang"] }}</td>
@@ -48,6 +61,15 @@
                     <td class="text-center">{{ $data["satuan"] }}</td>
                     <td class="text-center">{{ $data["berat"] }}</td>
                     <td class="text-center">Rp. {{ number_format($data["harga"]) }}</td>
+                    <td class="text-center">{{ $stok }}</td>
+                    <td class="text-center">
+                        <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#transaksiMasuk-{{ $data["kode_barang"] }}">
+                            <i class="fa fa-check"></i> Masuk
+                        </button>
+                        <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#transaksiKeluar-{{ $data["kode_barang"] }}">
+                            <i class="fa fa-minus"></i> Keluar
+                        </button>
+                    </td>
                     <td class="text-center">
                         <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#buttonEdit-{{ $data["kode_barang"] }}">
                             <i class="fa fa-edit"></i> Edit
@@ -161,6 +183,118 @@
                     </button>
                     <button type="submit" class="btn btn-success btn-sm">
                         <i class="fa fa-save"></i> Simpan
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endforeach
+<!-- END -->
+
+<!-- Transaksi Masuk -->
+@foreach ($barang as $brg)
+<div class="modal fade" id="transaksiMasuk-{{ $brg["kode_barang"] }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">
+                    <i class="fa fa-check"></i> Transaksi Barang Masuk
+                </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="{{ url('/transaksi/barang/masuk/') }}" method="POST">
+                {{ csrf_field() }}
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="kode_barang"> Kode Barang </label>
+                        <input type="text" class="form-control" name="kode_barang" id="kode_barang" value="{{ $brg["kode_barang"] }}" readonly>
+                    </div>
+                    <div class="row pt-2">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="tanggal"> Tanggal </label>
+                                <input type="date" class="form-control" name="tanggal" id="tanggal">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="qty"> QTY </label>
+                                <input type="number" class="form-control" name="qty" id="qty" placeholder="0" min="1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group pt-2">
+                        <label for="asal_barang"> Asal Barang </label>
+                        <input type="text" class="form-control" name="asal_barang" id="asal_barang" placeholder="Masukkan Asal Barang">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="reset" class="btn btn-danger btn-sm">
+                        <i class="fa fa-times"></i> Batal
+                    </button>
+                    <button type="submit" class="btn btn-primary btn-sm">
+                        <i class="fa fa-save"></i> Tambah
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endforeach
+<!-- END -->
+
+<!-- Transaksi Keluar -->
+@foreach ($barang as $brg)
+@php
+$barang_masuk = BarangTransaksi::where("kode_barang", $brg->kode_barang)->where("status", "1")->sum("qty");
+
+$barang_keluar = BarangTransaksi::where("kode_barang", $brg["kode_barang"])->where("status", "0")->sum("qty");
+
+$stok = $barang_masuk - $barang_keluar;
+@endphp
+
+<div class="modal fade" id="transaksiKeluar-{{ $brg["kode_barang"] }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">
+                    <i class="fa fa-check"></i> Transaksi Barang Keluar
+                </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="{{ url('/transaksi/barang/keluar/') }}" method="POST">
+                {{ csrf_field() }}
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="kode_barang"> Kode Barang </label>
+                        <input type="text" class="form-control" name="kode_barang" id="kode_barang" value="{{ $brg["kode_barang"] }}" readonly>
+                    </div>
+                    <div class="row pt-2">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="tanggal"> Tanggal </label>
+                                <input type="date" class="form-control" name="tanggal" id="tanggal">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="qty"> QTY </label>
+                                <input type="number" class="form-control" name="qty" id="qty" placeholder="0" min="0" max="{{ $stok }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group pt-2">
+                        <label for="asal_barang"> Asal Barang </label>
+                        <input type="text" class="form-control" name="asal_barang" id="asal_barang" placeholder="Masukkan Asal Barang">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="reset" class="btn btn-danger btn-sm">
+                        <i class="fa fa-times"></i> Batal
+                    </button>
+                    <button type="submit" class="btn btn-primary btn-sm">
+                        <i class="fa fa-save"></i> Tambah
                     </button>
                 </div>
             </form>

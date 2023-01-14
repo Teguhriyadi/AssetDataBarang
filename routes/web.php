@@ -5,6 +5,8 @@ use App\Http\Controllers\Akun\UsersController;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\Autentikasi\LoginController;
 use App\Http\Controllers\Master\BarangController;
+use App\Http\Controllers\Transaksi\BarangKeluarController;
+use App\Http\Controllers\Transaksi\BarangMasukController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,6 +30,13 @@ Route::group(["middleware" => ["autentikasi"]], function() {
 
     Route::prefix("master")->group(function() {
         Route::resource("barang", BarangController::class);
+    });
+
+    Route::prefix("transaksi")->group(function() {
+        Route::prefix("barang")->group(function() {
+            Route::resource("masuk", BarangMasukController::class);
+            Route::resource("keluar", BarangKeluarController::class);
+        });
     });
 
     Route::prefix("akun")->group(function() {
