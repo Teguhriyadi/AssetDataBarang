@@ -1,5 +1,7 @@
 @extends("layouts.v_main")
 
+@section("title", "Dashboard")
+
 @section("content")
 
 <h3>Dashboard</h3>

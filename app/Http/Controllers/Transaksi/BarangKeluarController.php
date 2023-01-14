@@ -30,7 +30,7 @@ class BarangKeluarController extends Controller
 
         return redirect("/transaksi/barang/keluar")->with([
             "message" => '<div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>Berhasil!</strong> Barang Masuk Telah Tercatat.
+            <strong>Berhasil!</strong> Barang Keluar Telah Tercatat.
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>'
         ]);

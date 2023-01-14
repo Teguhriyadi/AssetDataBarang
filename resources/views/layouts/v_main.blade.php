@@ -3,11 +3,17 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>{{ env("APP_NAME") }} - @yield("title")</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     @yield("css")
+
+    <style>
+        .active {
+            font-weight: bold;
+        }
+    </style>
 
 </head>
 <body>
@@ -23,12 +29,12 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="{{ url('/dashboard') }}">
+                        <a class="nav-link {{ Request::is("dashboard") ? 'active' : '' }} " aria-current="page" href="{{ url('/dashboard') }}">
                             <i class="fa fa-home"></i> Dashboard
                         </a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle {{ Request::is("master/barang") ? 'active' : '' }} " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fa fa-bar-chart-o"></i> Master
                         </a>
                         <ul class="dropdown-menu">
@@ -40,7 +46,7 @@
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle {{ Request::segment(1) == "transaksi" ? 'active' : '' }} " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fa fa-bar-chart-o"></i> Transaksi
                         </a>
                         <ul class="dropdown-menu">
@@ -64,7 +70,7 @@
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle {{ Request::segment(1) == "akun" ? "active" : "" }} " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fa fa-users"></i> Users
                         </a>
                         <ul class="dropdown-menu">

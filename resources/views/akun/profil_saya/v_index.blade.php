@@ -1,5 +1,7 @@
 @extends("layouts.v_main")
 
+@section("title", "Profil Saya")
+
 @section("content")
 
 <h3>Profil {{ Auth::user()->nama }} </h3>

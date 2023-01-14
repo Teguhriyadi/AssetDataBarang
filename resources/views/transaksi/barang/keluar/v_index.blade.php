@@ -1,5 +1,7 @@
 @extends("layouts.v_main")
 
+@section("title", "Barang Keluar")
+
 @section("css")
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
@@ -13,7 +15,7 @@
     use Carbon\Carbon;
 @endphp
 
-<h3>Data Barang Masuk</h3>
+<h3>Data Barang Keluar</h3>
 
 @if (session('message'))
 {!! session('message') !!}

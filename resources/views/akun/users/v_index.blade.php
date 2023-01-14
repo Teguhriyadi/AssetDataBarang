@@ -1,5 +1,7 @@
 @extends("layouts.v_main")
 
+@section("title", "Users")
+
 @section("css")
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
