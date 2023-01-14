@@ -4,6 +4,7 @@ use App\Http\Controllers\Akun\ProfilSayaController;
 use App\Http\Controllers\Akun\UsersController;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\Autentikasi\LoginController;
+use App\Http\Controllers\Master\BarangController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +25,10 @@ Route::group(["middleware" => ["guest"]], function() {
 
 Route::group(["middleware" => ["autentikasi"]], function() {
     Route::get("/dashboard", [AppController::class, "dashboard"]);
+
+    Route::prefix("master")->group(function() {
+        Route::resource("barang", BarangController::class);
+    });
 
     Route::prefix("akun")->group(function() {
         Route::resource("users", UsersController::class);
