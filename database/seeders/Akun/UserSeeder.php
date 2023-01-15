@@ -19,7 +19,10 @@ class UserSeeder extends Seeder
             "id_users" => "20230112",
             "nama" => "Administrator",
             "email" => "admin@gmail.com",
-            "password" => bcrypt("password")
+            "password" => bcrypt("password"),
+            "nomor_hp" => "085324237299",
+            "jenis_kelamin" => "L",
+            "alamat" => "Bandung"
         ]);
     }
 }
